@@ -23,6 +23,7 @@ with open(csvpath) as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
     print(csvreader)
     csvheader = next(csvreader)
+    last_row = int(next(csvreader)[1])
 
     # Read each row of data after the header
     for row in csvreader:
@@ -42,15 +43,16 @@ with open(csvpath) as csvfile:
         last_row = int(row[1])
 
 #Calculations.
-average_change = sum(profit_loss_change) / len(profit_loss_change)
+average_change = round(sum(profit_loss_change) / len(profit_loss_change), ndigits = 2)
+month_total = month_total + 1
 
 #Print results.
 print("Financial Analysis")
 print("------------------------------------")
 print(f"Total Months: " + str(month_total))
-print(f"Total: $" + str(net_total))
-print(f"Average Change: $" + str(average_change))
-print(f"Greatest Increase in Profit: " + best_month + " $" + str(greatest_increase))
-print(f"Greatest Decrease in Profit: " + worst_month + " $" + str(greatest_decrease))
+print(f"Total: $ " + str(net_total))
+print(f"Average Change: $ " + str(average_change))
+print(f"Greatest Increase in Profit: (" + best_month + ") $ " + str(greatest_increase))
+print(f"Greatest Decrease in Profit: (" + worst_month + ") $ " + str(greatest_decrease))
 
 #Set variable for output file.
