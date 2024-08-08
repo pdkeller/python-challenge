@@ -22,6 +22,8 @@ with open(csvpath) as csvfile:
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
     print(csvreader)
+
+    #Read the header row first.
     csvheader = next(csvreader)
     last_row = int(next(csvreader)[1])
 
