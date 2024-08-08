@@ -33,14 +33,25 @@ with open(csvpath) as csvfile:
         if(row[2] == "Raymon Anthony Doane"):
             doane_votes = doane_votes + 1
 
+stockham_pct = round(stockham_votes / total_votes * 100, ndigits = 3)
+degette_pct = round(degette_votes / total_votes * 100, ndigits = 3)
+doane_pct = round(doane_votes / total_votes * 100, ndigits = 3)
+
+if(int(stockham_votes) > int(degette_votes) and int(stockham_votes) > int(doane_votes)):
+    winner = "Charles Casper Stockham"
+elif(int(degette_votes) > int(stockham_votes) and int(degette_votes) > int(doane_votes)):
+    winner = "Diana DeGette"
+else:
+    winner = "Raymon Anthony Doane"
+
+#Print 
 print("Election Results")
 print("----------------------------")
 print(f"Total Votes: " + str(total_votes))
 print("----------------------------")
 print("----------------------------")
-print(f"Charles Casper Stockham: "+ str(stockham_votes))
-print(f"Diana DeGette: " + str(degette_votes))
-print(f"Raymon Anthony Doane: " + str(doane_votes))
+print(f"Charles Casper Stockham: " + str(stockham_pct) + " % (" + str(stockham_votes) + ")")
+print(f"Diana DeGette: " + str(degette_pct) + " % (" + str(degette_votes) + ")")
+print(f"Raymon Anthony Doane: " + str(doane_pct) + " % (" + str(doane_votes) + ")")
 print("----------------------------")
-#Winner Function.
-print(f"Winner: ")
+print(f"Winner: " + str(winner))
